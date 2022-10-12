@@ -1,0 +1,158 @@
+body,button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Smythe', cursive;
+}
+
+/* layout */
+
+main,header {
+  width: 600px;
+  margin: 0 auto;
+}
+
+/* menu */
+.menu-items {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 600px;
+  border-bottom: 1px solid grey;
+  margin-bottom: 1.5em;
+}
+
+.details {
+    width: 500px;
+}
+
+.add-btn{
+  margin-left: 10em;
+  border: none;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  border-radius: 9px;
+  font-size: 2rem;
+}
+
+/* utility */
+
+.hidden {
+  display:none
+}
+
+/* Order Screen
+ */
+
+.order-items,.total-price {
+  display:flex;
+  justify-content: space-between;
+}
+
+.item-row{
+  display: flex;
+  align-items: center;
+}
+
+.remove-btn {
+  width: 60px;
+  height: 20px;
+  margin: 0.9em;
+  border: none;
+  background: none;
+  color:grey;
+}
+
+span {
+  font-size: 3rem;
+  margin-right: 0.5em;
+}
+
+.order-total,.remove-btn {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.complete-order-btn {
+  width: 508px;
+  height: 60px;
+  font-size: 1.5rem;
+  border: none;
+  background: #16DB99;
+}
+
+/* modal */
+.overlay {
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128,128,128,0.5); 
+  display: block;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    max-width: 90%;
+    margin: auto;
+    width: 524px;
+    height: 542.24px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 6px 2px #666;
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+}
+
+.modal-inner{
+    width: 290px;
+    margin: 0 auto;
+}
+
+/* modal button */
+
+.close-modal-btn-container{
+    text-align: right;
+    margin: 9px;
+}
+
+.modal-close-btn {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: whitesmoke;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:active{
+    color: red;
+    cursor: pointer;
+}
+
+input, form>h2 {
+  text-align: center;
+  width: 475.91px;
+  height: 71.3px;
+  margin: 0.5em;
+}
+
+.pay-btn {
+ margin-top: 2em;
+ width: 475.91px;
+ height: 71.3px;
+ background: #16DB99;
+}
