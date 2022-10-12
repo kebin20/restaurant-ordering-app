@@ -33,6 +33,7 @@ main,header {
   text-align: center;
   border-radius: 9px;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 /* utility */
@@ -61,6 +62,7 @@ main,header {
   border: none;
   background: none;
   color:grey;
+  cursor: pointer;
 }
 
 span {
@@ -79,6 +81,7 @@ span {
   font-size: 1.5rem;
   border: none;
   background: #16DB99;
+  cursor: pointer;
 }
 
 /* modal */
@@ -132,9 +135,10 @@ form {
 .modal-close-btn {
   font-size: 20px;
   font-weight: bold;
-  background-color: transparent;
+  /* background-color: transparent; */
   border: 1px solid transparent;
   color: whitesmoke;
+  cursor: pointer;
 }
 
 .modal-close-btn:hover,
@@ -155,4 +159,5 @@ input, form>h2 {
  width: 475.91px;
  height: 71.3px;
  background: #16DB99;
+ cursor: pointer;
 }
