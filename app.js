@@ -1,5 +1,7 @@
 import { menuArray } from "./data.js";
 
+let orderedItems = [];
+
 function getMenuHtml() {
   let menuHtml = "";
   menuArray.forEach((menu) => {
@@ -30,25 +32,31 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//LOOK INTO GETTING DATA ID ATTRIBUTE FROM THE ELEMENT CLICKED IN THE EVENT LISTENER
+
 function addItems(itemId) {
-  const targetItemID = menuArray.filter((item) => {
+  const targetItem = menuArray.filter((item) => {
     return item.id == itemId;
   })[0];
 
-  // console.log(targetItemID.price);
+  orderedItems.push(targetItem);
+
+  console.log(orderedItems);
 
   document.getElementById("total").classList.remove("hidden");
 
+  renderOrderedItems();
+
+  renderTotal();
   // let priceArray = [];
   // let newPriceArray = priceArray.shift(targetItemID.price);
-  // const totalPrice = newPriceArray.reduce((a, b) => a + b, 0);
 
   // console.log(totalPrice);
 
   // document.getElementById("total-price").textContent = totalPrice;
 
   // let getOrderItemsHtml = "";
-  // targetItemID.map((target) => {
+  // targetItem.map((target) => {
   //   getOrderItemsHtml += `
   //       <div class="order-items">
   //        <div class="item-row">
@@ -61,16 +69,28 @@ function addItems(itemId) {
   // });
 
   // document.getElementById("total").innerHTML = getOrderItemsHtml;
+}
 
-  return (document.getElementById("total").innerHTML += `
-        <div class="order-items">
-         <div class="item-row">
-        <h4>${targetItemID.name}</h4>
-        <button data-remove="remove" class="remove-btn">remove</button>
-         </div>
-        <p data-price="price">$${targetItemID.price}</p>
-        </div>
-    `);
+function renderOrderedItems() {
+  const html = orderedItems.map((item, index) => {
+    return `
+    <div class="order-items">
+     <div class="item-row">
+    <h4>${item.name}</h4>
+    <button data-remove="remove" data-id="${index}" class="remove-btn">remove</button>
+     </div>
+    <p data-price="price">$${item.price}</p>
+    </div>`;
+  });
+  document.getElementById("total").innerHTML = html.join("");
+}
+
+function renderTotal() {
+  const itemPrices = orderedItems.map((item) => item.price);
+  const totalPrice = itemPrices.reduce((a, b) => a + b, 0);
+  document.getElementById(
+    "total-price"
+  ).innerHTML = `Total Price: $${totalPrice}`;
 }
 
 function renderMenu() {
