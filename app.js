@@ -35,17 +35,32 @@ function addItems(itemId) {
     return item.id == itemId;
   })[0];
 
-  console.log(targetItemID.price);
+  // console.log(targetItemID.price);
 
   document.getElementById("total").classList.remove("hidden");
 
-  let priceArray = [];
-  let newPriceArray = priceArray.shift(targetItemID.price);
-  const totalPrice = newPriceArray.reduce((a, b) => a + b, 0);
+  // let priceArray = [];
+  // let newPriceArray = priceArray.shift(targetItemID.price);
+  // const totalPrice = newPriceArray.reduce((a, b) => a + b, 0);
 
-  console.log(totalPrice);
+  // console.log(totalPrice);
 
   // document.getElementById("total-price").textContent = totalPrice;
+
+  // let getOrderItemsHtml = "";
+  // targetItemID.map((target) => {
+  //   getOrderItemsHtml += `
+  //       <div class="order-items">
+  //        <div class="item-row">
+  //       <h4>${target.name}</h4>
+  //       <button data-remove="remove" class="remove-btn">remove</button>
+  //        </div>
+  //       <p data-price="price">$${target.price}</p>
+  //       </div>
+  //   `;
+  // });
+
+  // document.getElementById("total").innerHTML = getOrderItemsHtml;
 
   return (document.getElementById("total").innerHTML += `
         <div class="order-items">
