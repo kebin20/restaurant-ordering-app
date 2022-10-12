@@ -35,7 +35,17 @@ function addItems(itemId) {
     return item.id == itemId;
   })[0];
 
+  console.log(targetItemID.price);
+
   document.getElementById("total").classList.remove("hidden");
+
+  let priceArray = [];
+  let newPriceArray = priceArray.shift(targetItemID.price);
+  const totalPrice = newPriceArray.reduce((a, b) => a + b, 0);
+
+  console.log(totalPrice);
+
+  // document.getElementById("total-price").textContent = totalPrice;
 
   return (document.getElementById("total").innerHTML += `
         <div class="order-items">
@@ -46,11 +56,6 @@ function addItems(itemId) {
         <p data-price="price">$${targetItemID.price}</p>
         </div>
     `);
-  let priceArray = [];
-  priceArray.push(targetItemID.price);
-  const totalPrice = priceArray.reduce((a, b) => a + b, 0);
-
-  console.log(totalPrice);
 }
 
 function renderMenu() {
