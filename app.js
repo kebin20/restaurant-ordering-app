@@ -27,54 +27,46 @@ document.addEventListener("click", (e) => {
     removeItems(e.target.dataset.remove);
   } else if (e.target.id === "complete-order-btn") {
     completeOrder();
-  } else if (e.target.id === "close-modal") {
+  } else if (e.target.id === "modal-close-btn") {
     closeModal();
+  } else if (e.target.id === "pay-btn") {
+    renderThankScreen(e);
+    closeModal()
   }
 });
 
-//LOOK INTO GETTING DATA ID ATTRIBUTE FROM THE ELEMENT CLICKED IN THE EVENT LISTENER
 
 function addItems(itemId) {
+  document.getElementById("total").classList.remove("hidden");
   const targetItem = menuArray.filter((item) => {
     return item.id == itemId;
   })[0];
-
   orderedItems.push(targetItem);
-
-  console.log(orderedItems);
-
-  document.getElementById("total").classList.remove("hidden");
-
   renderOrderedItems();
-
   renderTotal();
-  // let priceArray = [];
-  // let newPriceArray = priceArray.shift(targetItemID.price);
+}
 
-  // console.log(totalPrice);
+function removeItems(itemId) {
+  orderedItems.splice(0, 1)
+  renderOrderedItems();
+  renderTotal();
+}
 
-  // document.getElementById("total-price").textContent = totalPrice;
+function renderThankScreen(e) {
+  e.preventDefault()
 
-  // let getOrderItemsHtml = "";
-  // targetItem.map((target) => {
-  //   getOrderItemsHtml += `
-  //       <div class="order-items">
-  //        <div class="item-row">
-  //       <h4>${target.name}</h4>
-  //       <button data-remove="remove" class="remove-btn">remove</button>
-  //        </div>
-  //       <p data-price="price">$${target.price}</p>
-  //       </div>
-  //   `;
-  // });
+  const el = document.getElementById('order-total')
+  el.remove()
 
-  // document.getElementById("total").innerHTML = getOrderItemsHtml;
+  const payerName = document.getElementById("name").value
+  document.getElementById("thankyou-screen").innerHTML = `<p>Thanks, ${payerName}! Your order is on its way! Please refresh your homepage to go back to the ordering screen</p>  
+  `
 }
 
 function renderOrderedItems() {
   const html = orderedItems.map((item, index) => {
     return `
-    <div class="order-items">
+    <div id="order-items" class="order-items">
      <div class="item-row">
     <h4>${item.name}</h4>
     <button data-remove="remove" data-id="${index}" class="remove-btn">remove</button>
@@ -90,7 +82,7 @@ function renderTotal() {
   const totalPrice = itemPrices.reduce((a, b) => a + b, 0);
   document.getElementById(
     "total-price"
-  ).innerHTML = `Total Price: $${totalPrice}`;
+  ).innerHTML = `Total Price: <span>$${totalPrice}</span>`;
 }
 
 function renderMenu() {
@@ -99,8 +91,20 @@ function renderMenu() {
 
 renderMenu();
 
-//Modal Function
-// const modal = document.getElementById("modal");
-// const closeButton = document.getElementById("modal-close-btn");
+// Modal Function
+const modal = document.getElementById("modal")
+const overlay = document.querySelector(".overlay")
 
-// closeButton.addEventListener("click", () => (modal.style.display = "none"));
+function closeModal() {
+  modal.style.display = "none"
+  modal.classList.remove("visible")
+  modal.classList.add("hidden")
+  overlay.style.display = "none"
+}
+
+function completeOrder() {
+  modal.style.display = "block"
+  modal.classList.remove("hidden")
+  modal.classList.add("visible")
+  overlay.style.display = "block"
+}

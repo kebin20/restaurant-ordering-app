@@ -16,16 +16,26 @@
 <body>
 
   <header>
-    <h1>Jimmy's Diner</h1>
+    <div class="container">
+    <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="burger joint">
+<div class="text-container">   
+      <h1>Jimmy's Diner</h1>
     <h2>The best burgers and pizzas in town </h2>
-    <img src="" alt="">
+  </div> 
+      </div>
   </header>
 
+     
 
   <main>
     <div class="menu" id="menu">
     </div>
 
+    <div class="order-completed-container" id="order-completed-container">
+    <div class="thankyou-screen" id="thankyou-screen">
+    </div>
+      </div>
+    
     <div class="order-total hidden" id="order-total">
       <h3>Your Order</h3>
       <div class="total hidden" id="total">
@@ -34,7 +44,8 @@
       <button id="complete-order-btn" class="complete-order-btn">Complete Order</button>
     </div>
 
-    <!--      <div class="overlay">
+    
+         <div class="overlay">
     <div class="modal hidden" id="modal">
       <form action="#">
          <div class="close-modal-btn-container">
@@ -42,7 +53,7 @@
                 </div>
         <h2>Enter card details</h2>
         <label for="name"></label>
-        <input type="text" placeholder="Enter your name" required>
+        <input id="name" type="text" placeholder="Enter your name" required>
         <label for="cardNumber"></label>
         <input type="number" placeholder="Enter your card number" required>
         <label for="CVV"></label>
@@ -50,13 +61,10 @@
         <button type="submit" class="pay-btn" id="pay-btn">Pay</button>
       </form>
     </div>
-     </div> -->
+     </div>
 
-    <!-- <div class="thankyou-screen">
-      <p>Thanks,<span>Name</span>! Your order is on its way!</p>
-    </div>
   </main>
-   -->
+  
 
 
     <script src="app.js" type="module"></script>

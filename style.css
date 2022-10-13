@@ -1,163 +1,220 @@
+/* html{
+  background: blue;
+} */
+
+body{
+  margin: 0;
+  padding: 0;
+}    
+
 body,button {
-    margin: 0;
-    padding: 0;
-    font-family: 'Smythe', cursive;
+  font-family: 'Smythe', cursive;
+}
+
+img {
+width: 600px;
+height: 167px;
+object-fit: cover;
+}
+
+.text-container {
+position: absolute;
+top: 1em;
+color: white;
+margin-left: 1em;
 }
 
 /* layout */
 
 main,header {
-  width: 600px;
-  margin: 0 auto;
+width: 600px;
+margin: 0 auto;
+background: white;
+padding-left:1em;
+padding-right: 1em;
 }
 
 /* menu */
 .menu-items {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  width: 600px;
-  border-bottom: 1px solid grey;
-  margin-bottom: 1.5em;
+display: flex;
+align-items: center;
+flex-direction: row;
+width: 600px;
+border-bottom: 1px solid grey;
+margin-bottom: 1.5em;
+}
+
+.menu-items>span {
+font-size: 3rem;
+margin-right: 0.5em;
 }
 
 .details {
-    width: 500px;
+  width: 500px;
 }
 
 .add-btn{
-  margin-left: 10em;
-  border: none;
-  width: 80px;
-  height: 40px;
-  text-align: center;
-  border-radius: 9px;
-  font-size: 2rem;
-  cursor: pointer;
+margin-left: 10em;
+border: none;
+width: 80px;
+height: 40px;
+text-align: center;
+border-radius: 9px;
+font-size: 2rem;
+cursor: pointer;
 }
 
 /* utility */
 
 .hidden {
-  display:none
+display:none
 }
 
-/* Order Screen
- */
+.visible{
+display:block
+}
+
+/* Order Cart Screen
+*/
 
 .order-items,.total-price {
-  display:flex;
-  justify-content: space-between;
+display:flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.order-items,.item-row{
+height: 35px;
+}
+
+.total-price{
+border-top: 1px solid;
+padding: 1em;
 }
 
 .item-row{
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
 }
 
 .remove-btn {
-  width: 60px;
-  height: 20px;
-  margin: 0.9em;
-  border: none;
-  background: none;
-  color:grey;
-  cursor: pointer;
-}
-
-span {
-  font-size: 3rem;
-  margin-right: 0.5em;
+width: 60px;
+height: 20px;
+margin: 0.9em;
+border: none;
+background: none;
+color:grey;
+cursor: pointer;
 }
 
 .order-total,.remove-btn {
-  text-align: center;
-  font-size: 1.3rem;
+text-align: center;
+font-size: 1.3rem;
 }
 
 .complete-order-btn {
-  width: 508px;
-  height: 60px;
-  font-size: 1.5rem;
-  border: none;
-  background: #16DB99;
-  cursor: pointer;
+width: 508px;
+height: 60px;
+font-size: 1.5rem;
+border: none;
+background: #16DB99;
+cursor: pointer;
+margin-bottom: 1em;
 }
 
 /* modal */
 .overlay {
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(128,128,128,0.5); 
-  display: block;
+justify-content: center;
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background-color: rgba(128,128,128,0.5); 
+display: none;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modal {
-    display: block;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    max-width: 90%;
-    margin: auto;
-    width: 524px;
-    height: 542.24px;
-    border-radius: 7px;
-    box-shadow: 0px 0px 6px 2px #666;
-    background-color: white;
-    color: black;
-    font-size: 1rem;
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  max-width: 90%;
+  margin: auto;
+  width: 524px;
+  height: 542.24px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 6px 2px #666;
+  background-color: white;
+  color: black;
+  font-size: 1rem;
 }
 
 .modal-inner{
-    width: 290px;
-    margin: 0 auto;
+  width: 290px;
+  margin: 0 auto;
 }
 
-/* modal button */
+input, form>h2 {
+text-align: center;
+width: 475.91px;
+height: 71.3px;
+margin: 0.5em;
+}
+
+.pay-btn {
+margin-top: 1em;
+width: 475.91px;
+height: 71.3px;
+background: #16DB99;
+cursor: pointer;
+font-size: 1.5rem;
+}
+
+/* order completed */
+
+.order-completed-container{
+display: flex;
+}
+
+.thankyou-screen>p {
+width: 504px;
+height: 120px;
+padding: 1em;
+margin: 1em;
+background: #ECFDF5;
+border-radius: 3px;
+text-align: center;
+font-size: 2rem;
+}
+
+/* modal close button */
 
 .close-modal-btn-container{
-    text-align: right;
-    margin: 9px;
+  margin-left: 28em;
+  margin-top: 0.5em;
 }
 
 .modal-close-btn {
-  font-size: 20px;
-  font-weight: bold;
-  /* background-color: transparent; */
-  border: 1px solid transparent;
-  color: whitesmoke;
-  cursor: pointer;
+font-size: 2rem;
+font-weight: bold;
+background-color: transparent;
+border: 1px solid transparent;
+color: black;
+cursor: pointer;
 }
 
 .modal-close-btn:hover,
 .modal-close-btn:active{
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 
-input, form>h2 {
-  text-align: center;
-  width: 475.91px;
-  height: 71.3px;
-  margin: 0.5em;
-}
-
-.pay-btn {
- margin-top: 2em;
- width: 475.91px;
- height: 71.3px;
- background: #16DB99;
- cursor: pointer;
-}
