@@ -23,8 +23,8 @@ document.addEventListener("click", (e) => {
   document.getElementById("order-total").classList.remove("hidden");
   if (e.target.dataset.item) {
     addItems(e.target.dataset.item);
-  } else if (e.target.dataset.remove) {
-    removeItems(e.target.dataset.remove);
+  } else if (e.target.dataset.indexNumber) {
+    removeItems(e.target.dataset.indexNumber);
   } else if (e.target.id === "complete-order-btn") {
     completeOrder();
   } else if (e.target.id === "modal-close-btn") {
@@ -33,6 +33,7 @@ document.addEventListener("click", (e) => {
     renderThankScreen(e);
     closeModal()
   }
+  console.log(e.target.dataset.indexNumber)
 });
 
 
@@ -46,8 +47,8 @@ function addItems(itemId) {
   renderTotal();
 }
 
-function removeItems(itemId) {
-  orderedItems.splice(0, 1)
+function removeItems(index) {
+  orderedItems.splice(index, 1)
   renderOrderedItems();
   renderTotal();
 }
@@ -69,7 +70,7 @@ function renderOrderedItems() {
     <div id="order-items" class="order-items">
      <div class="item-row">
     <h4>${item.name}</h4>
-    <button data-remove="remove" data-id="${index}" class="remove-btn">remove</button>
+    <button data-remove="remove" data-index-number="${index}" class="remove-btn">remove</button>
      </div>
     <p data-price="price">$${item.price}</p>
     </div>`;
