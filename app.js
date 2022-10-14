@@ -1,3 +1,5 @@
+import { menuArray } from "./data.js";
+
 let orderedItems = [];
 
 function getMenuHtml() {
