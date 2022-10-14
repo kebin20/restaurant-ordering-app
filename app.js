@@ -23,58 +23,64 @@ document.addEventListener("click", (e) => {
   document.getElementById("order-total").classList.remove("hidden");
   if (e.target.dataset.item) {
     addItems(e.target.dataset.item);
-  } else if (e.target.dataset.indexNumber) {
-    removeItems(e.target.dataset.indexNumber);
+  } else if (e.target.dataset.remove) {
+    removeItems(e.target.dataset.remove);
   } else if (e.target.id === "complete-order-btn") {
     completeOrder();
-  } else if (e.target.id === "modal-close-btn") {
+  } else if (e.target.id === "close-modal") {
     closeModal();
   } else if (e.target.id === "pay-btn") {
     renderThankScreen(e);
-    closeModal();
+    closeModal()
   }
-  console.log(e.target.dataset.indexNumber);
 });
 
+//LOOK INTO GETTING DATA ID ATTRIBUTE FROM THE ELEMENT CLICKED IN THE EVENT LISTENER
+
 function addItems(itemId) {
-  document.getElementById("order-total").style.display = "flex";
-
-  // classList.remove("hidden");
-
   const targetItem = menuArray.filter((item) => {
     return item.id == itemId;
   })[0];
+
   orderedItems.push(targetItem);
+
+  console.log(orderedItems);
+
+  document.getElementById("total").classList.remove("hidden");
+
   renderOrderedItems();
+
   renderTotal();
-}
+  // let priceArray = [];
+  // let newPriceArray = priceArray.shift(targetItemID.price);
 
-function removeItems(index) {
-  orderedItems.splice(index, 1);
-  renderOrderedItems();
-  renderTotal();
-}
+  // console.log(totalPrice);
 
-function renderThankScreen(e) {
-  e.preventDefault();
+  // document.getElementById("total-price").textContent = totalPrice;
 
-  const el = document.getElementById("order-total");
-  el.remove();
+  // let getOrderItemsHtml = "";
+  // targetItem.map((target) => {
+  //   getOrderItemsHtml += `
+  //       <div class="order-items">
+  //        <div class="item-row">
+  //       <h4>${target.name}</h4>
+  //       <button data-remove="remove" class="remove-btn">remove</button>
+  //        </div>
+  //       <p data-price="price">$${target.price}</p>
+  //       </div>
+  //   `;
+  // });
 
-  const payerName = document.getElementById("name").value;
-  document.getElementById(
-    "thankyou-screen"
-  ).innerHTML = `<p>Thanks, ${payerName}! Your order is on its way! Please refresh your homepage to go back to the ordering screen</p>  
-  `;
+  // document.getElementById("total").innerHTML = getOrderItemsHtml;
 }
 
 function renderOrderedItems() {
   const html = orderedItems.map((item, index) => {
     return `
-    <div id="order-items" class="order-items">
+    <div class="order-items">
      <div class="item-row">
     <h4>${item.name}</h4>
-    <button data-remove="remove" data-index-number="${index}" class="remove-btn">remove</button>
+    <button data-remove="remove" data-id="${index}" class="remove-btn">remove</button>
      </div>
     <p data-price="price">$${item.price}</p>
     </div>`;
@@ -87,7 +93,7 @@ function renderTotal() {
   const totalPrice = itemPrices.reduce((a, b) => a + b, 0);
   document.getElementById(
     "total-price"
-  ).innerHTML = `Total Price: <span>$${totalPrice}</span>`;
+  ).innerHTML = `Total Price: $${totalPrice}`;
 }
 
 function renderMenu() {
@@ -96,20 +102,8 @@ function renderMenu() {
 
 renderMenu();
 
-// Modal Function
-const modal = document.getElementById("modal");
-const overlay = document.querySelector(".overlay");
+//Modal Function
+// const modal = document.getElementById("modal");
+// const closeButton = document.getElementById("modal-close-btn");
 
-function closeModal() {
-  modal.style.display = "none";
-  modal.classList.remove("visible");
-  modal.classList.add("hidden");
-  overlay.style.display = "none";
-}
-
-function completeOrder() {
-  modal.style.display = "block";
-  modal.classList.remove("hidden");
-  modal.classList.add("visible");
-  overlay.style.display = "block";
-}
+// closeButton.addEventListener("click", () => (modal.style.display = "none"));
