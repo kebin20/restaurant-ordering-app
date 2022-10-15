@@ -33,15 +33,11 @@ document.addEventListener("click", (e) => {
     renderThankScreen(e);
     closeModal()
   }
-  console.log(e.target.dataset.indexNumber)
 });
 
 
 function addItems(itemId) { 
   document.getElementById("order-total").style.display = "flex";
-
-
-// classList.remove("hidden");
                            
   const targetItem = menuArray.filter((item) => {
     return item.id == itemId;
