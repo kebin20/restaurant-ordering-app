@@ -1,6 +1,6 @@
 import { menuArray } from "./data.js";
 
-let orderedItems = [];
+const orderedItems = [];
 
 function getMenuHtml() {
   let menuHtml = "";
@@ -40,6 +40,7 @@ function addItems(itemId) {
   document.getElementById("order-total").style.display = "flex";
                            
   const targetItem = menuArray.filter((item) => {
+    // eslint-disable-next-line eqeqeq
     return item.id == itemId;
   })[0];
   orderedItems.push(targetItem);
